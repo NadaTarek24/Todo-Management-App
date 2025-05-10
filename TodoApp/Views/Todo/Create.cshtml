@@ -1,0 +1,15 @@
+﻿@model TodoApp.Models.Todo
+
+@{
+    ViewData["Title"] = "Create Todo";
+}
+
+<h2>Create Todo Task</h2>
+<!-- Form for creating a new Todo item -->
+<form asp-action="Create" method="post">
+    @Html.Partial("_TodoForm")
+    <!-- Submit button -->
+    <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>

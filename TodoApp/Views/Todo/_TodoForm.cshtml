@@ -1,0 +1,32 @@
+﻿@model TodoApp.Models.Todo
+<!-- Title input field -->
+<div class="mb-3">
+    <label asp-for="Title" class="form-label"></label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+<!-- Optional description field -->
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+</div>
+<!-- Dropdown list for priority (Low, Medium, High) -->
+<div class="mb-3">
+    <label asp-for="Priority" class="form-label"></label>
+    <select asp-for="Priority" class="form-select" asp-items="Html.GetEnumSelectList<TodoApp.Models.TodoPriority>()">
+        <option value="">-- Select Priority --</option>
+    </select>
+    <span asp-validation-for="Priority" class="text-danger"></span>
+</div>
+<!-- Due date input field (with custom validator to prevent past dates) -->
+<div class="mb-3">
+    <label asp-for="DueDate" class="form-label"></label>
+    <input asp-for="DueDate" class="form-control" type="date" />
+    <span asp-validation-for="DueDate" class="text-danger"></span>
+</div>
+<!-- Enables client-side validation using jQuery -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
